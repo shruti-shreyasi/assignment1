@@ -1,0 +1,41 @@
+.mainclass{
+    width: 650px;
+    margin: auto;
+    height: min-content;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+.grid1{
+    height: min-content;
+    margin: 0;
+}
+.grid1 ul{
+    margin:0;
+    padding: 5px;
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    background: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.grid2 article img{
+    margin: auto;
+    width: 350px;
+    height: 600px;
+    border-radius: 2px;
+}
+
+img{
+    object-fit: cover;
+}
+
+.main{
+    margin: auto;
+}
+
+html{
+    font-family: 'Courier New', Courier, monospace;
+}
