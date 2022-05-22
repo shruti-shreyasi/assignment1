@@ -6,14 +6,14 @@ class Item {
     findDescription() {
         let title = this.title;
         let desc = "";
-        const limitToround = 20;
+        const limitToround = 25;
         if (title.length > limitToround) {
             const myArray = title.split(".");
             let dum = myArray[1];
             let numEnd = dum.length;
-            numEnd = limitToround - 5 - numEnd;
+            numEnd = limitToround - 15 - numEnd;
             numEnd = title.length - numEnd;
-            desc = title.substring(0, 4) + "...";
+            desc = title.substring(0, 14) + "...";
             desc = desc + myArray[0].substring(numEnd);
             desc = desc + "." + dum;
         } else {
@@ -25,14 +25,14 @@ class Item {
 
 const findDescription = function (title) {
     let desc = "";
-    const limitToround = 20;
+    const limitToround = 25;
     if (title.length > limitToround) {
         const myArray = title.split(".");
         let dum = myArray[1];
         let numEnd = dum.length;
-        numEnd = limitToround - 5 - numEnd;
+        numEnd = limitToround - 15 - numEnd;
         numEnd = title.length - numEnd;
-        desc = title.substring(0, 4) + "...";
+        desc = title.substring(0, 14) + "...";
         desc = desc + myArray[0].substring(numEnd);
         desc = desc + "." + dum;
     } else {
@@ -144,11 +144,19 @@ const functionRight = function (presentItem) {
 grid1.addEventListener("click", (event) => {
     console.log(event);
     LASTITEM = PRESENTITEM;
-    PRESENTITEM = event.target.getAttribute("id");
-    console.log(PRESENTITEM);
-    functionRight(itemObjectArray[PRESENTITEM - 1]);
-    changeHighlight();
-},true);
+    if (event.path[0].hasAttribute("id")) {
+        PRESENTITEM = event.path[0].getAttribute("id");
+        console.log(PRESENTITEM);
+        functionRight(itemObjectArray[PRESENTITEM - 1]);
+        changeHighlight();
+    }
+    if (event.path[1].hasAttribute("id")) {
+        PRESENTITEM = event.path[1].getAttribute("id");
+        console.log(PRESENTITEM);
+        functionRight(itemObjectArray[PRESENTITEM - 1]);
+        changeHighlight();
+    }
+}, false);
 
 document.addEventListener("keydown", (event) => {
     if (event.key == "ArrowDown") {
@@ -178,4 +186,9 @@ const changeHighlight = function () {
         document.getElementById(LASTITEM).style.background = "white";
     }
     document.getElementById(PRESENTITEM).style.background = "rgba(181, 229, 231, 50%)";
+}
+
+for (const item of itemObjectArray) {
+    console.log(item.title.length);
+    console.log((findDescription(item.title)).length);
 }
