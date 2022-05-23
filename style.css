@@ -2,10 +2,17 @@
     margin: auto;
     height: min-content;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0;
+    gap: 1rem;
     width: min-content;
+    /* grid-template-columns: repeat(2, 1fr); */
 }
+
+@media (min-width: 650px) {
+    .mainclass {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 .grid1{
     height: min-content;
     margin: 0;
@@ -19,6 +26,7 @@
     background: white;
     border: none;
     border-radius: 5px;
+    font-size: 1rem;
 }
 
 .grid2 article img{
@@ -26,6 +34,7 @@
     width: 350px;
     height: 500px;
     border-radius: 2px;
+    overflow: scroll;
 }
 
 img{
@@ -38,4 +47,9 @@ img{
 
 html{
     font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8rem;
+} 
+
+.textDisplayed p{
+    text-align: center;
 }
